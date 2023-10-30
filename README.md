@@ -1,1 +1,0 @@
-# AWS-Certify-Hub
