@@ -1,7 +1,7 @@
 :root {
     --background-color: #ffffff;
     --text-color: #000000;
-    --primary-color: #2d73c9;
+    --primary-color: #22c4ff2c;
     --secondary-color: #4caf50;
     --tertiary-color: #ff5722;
 }
@@ -37,7 +37,7 @@
 }
 
 .azul {
-    color: var(--primary-color);
+    color: #1c9bc9;
     font-weight: bolder;
 }
 

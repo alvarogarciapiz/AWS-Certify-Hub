@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import './assets/styles/App.css';
 import { Route, Routes } from 'react-router-dom';
 import Navbar from './components/navbar/Navbar';
+import Footer from './components/Footer';
 import Sidebar from './components/navbar/Sidebar'
 
 import Home from './components/Home';
@@ -32,6 +33,7 @@ function App() {
         <Route path="/exam" element={<ExamMain />} />
         <Route path="/examerrors" element={<ExamErrors />} />
       </Routes>
+      <Footer />
     </>
   );
 }

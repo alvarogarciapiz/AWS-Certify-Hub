@@ -101,6 +101,7 @@ function ExamMain() {
   return (
     <div className="container">
       <div>
+
         <p className="pregunta">
           <a className="azul">Question {question.id}</a> ➡️{" "}
           {preguntaSinTresCaracteres}

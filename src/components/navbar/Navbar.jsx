@@ -30,7 +30,7 @@ const Navbar = ({ toggle }) => {
       <a href="https://github.com/alvarogarciapiz" target="_blank" rel="noopener">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="github-icon icon-tabler icon-tabler-brand-github"
+          className="github-icon icon-tabler icon-tabler-brand-github pc-view-only"
           width="30"
           height="30"
           viewBox="0 0 24 24"

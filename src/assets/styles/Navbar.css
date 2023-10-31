@@ -59,3 +59,8 @@ nav {
   z-index: 99999;
   right: 0px;
 }
+@media (max-width: 800px) {
+  .pc-view-only {
+      display: none;
+  }
+}

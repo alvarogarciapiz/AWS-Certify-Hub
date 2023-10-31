@@ -1,0 +1,35 @@
+/* Footer.css */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+    padding-left: 200px;
+    padding-right: 200px;
+    background-color: black;
+    color: white;
+    position: relative;
+    width: 100%;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-column a {
+    color: white;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+    .footer {
+        flex-direction: column;
+        padding: 20px 10px;
+        align-items: center;
+    }
+    .footer-column{
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}
