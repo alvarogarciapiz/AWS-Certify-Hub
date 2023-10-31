@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import data from "../assets/preguntas.json";
 import "../assets/styles/ExamMain.css";
+import { Link } from 'react-router-dom';
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -17,6 +18,7 @@ function ExamErrors() {
   const [selectedOptions, setSelectedOptions] = useState({});
   const [selectedStyles, setSelectedStyles] = useState({});
   const [estadoRespuesta, setEstadoRespuesta] = useState(false);
+  const [noQuestionsLeft, setNoQuestionsLeft] = useState(false);
 
   const nextQuestion = () => {
     setCurrentQuestion(currentQuestion + 1);
@@ -70,6 +72,11 @@ function ExamErrors() {
         localStorage.setItem("FailedBCPR", JSON.stringify(failedQuestions));
       }
     }
+    // Check if there are any questions left in FailedBCPR
+    const failedQuestions = JSON.parse(localStorage.getItem("FailedBCPR")) || [];
+    if (failedQuestions.length === 0) {
+      setNoQuestionsLeft(true);
+    }
   };
 
   useEffect(() => {
@@ -78,7 +85,21 @@ function ExamErrors() {
       failedQuestions.includes(question.id)
     );
     setShuffledQuestions(shuffleArray(filteredQuestions));
+    if (filteredQuestions.length === 0) {
+      setNoQuestionsLeft(true);
+    }
   }, []);
+
+  if (noQuestionsLeft) {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <h1 className="noErrors">
+  🥳 There are no errors. Make some tests and come back later! 
+</h1>
+        
+      </div>
+    );
+  }
 
   if (currentQuestion >= shuffledQuestions.length) {
     return <div>¡Fin del juego!</div>;

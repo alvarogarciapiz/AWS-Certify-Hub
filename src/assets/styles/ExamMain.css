@@ -152,3 +152,24 @@ button:focus-visible {
     align-items: center;
     height: 100vh;
 }
+
+.noErrors {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 2em;
+    color: #1a1a1a;
+    animation: glow 2s ease-in-out infinite alternate;
+    text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+    .noErrors {
+        font-size: 1.5em;
+    }
+}
+
+.blueLinkError {
+    color: blue;
+}
