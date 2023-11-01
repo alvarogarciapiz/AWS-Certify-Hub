@@ -1,7 +1,9 @@
 # AWS Certify Hub
 
-## Overview
+## Project Structure
+![Project structure](./src/assets/images/preject_overview.png)
 
+## Overview
 AWS Certify Hub is a web application built with React and Vite, designed to help individuals prepare for AWS certifications, such as AWS Cloud Practitioner. It provides a variety of resources and tools to enhance your certification preparation.
 
 ## Features
