@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import '../assets/styles/Resources.css';
-import project_overview from '../assets/images/preject_overview.png';
 
 const Resources = () => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -12,19 +11,19 @@ const Resources = () => {
     },
     {
       question: 'Exam Tips',
-      answer: 'Lo que sea'
+      answer: 'Coming soon...'
     },
     {
       question: 'Exam Structure',
-      answer: 'Sí, puedes personalizar los estilos editando el archivo FAQComponent.css.'
+      answer: 'Coming soon...'
     },
     {
       question: 'How can I register to the exam?',
-      answer: 'Sí, puedes personalizar los estilos editando el archivo FAQComponent.css.<br /><img class="custom-image" src="' + project_overview + '" alt="Imagen de ejemplo"  />'
+      answer: 'Coming soon...'
     },
     {
       question: 'Submit a Question',
-      answer: 'Meter aquí componente para poder submitear una question'
+      answer: 'Coming soon...'
     },
   ];
 
