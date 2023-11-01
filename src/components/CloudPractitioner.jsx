@@ -2,6 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Grid } from "@mui/material";
 import "../assets/styles/CloudPractitioner.css";
+import simulator from '../../public/BCPR_simulator.webp'
+import exams from '../../public/BCPR_exams.webp'
+import errors from '../../public/BCPR_errors.webp'
 
 function CloudPractitioner() {
   return (
@@ -19,7 +22,7 @@ function CloudPractitioner() {
               <Link to="/examsimulator" className="links">
                 <img
                   className="roundimage"
-                  src="../../public/BCPR_simulator.webp"
+                  src={simulator}
                   alt="BCPR simulator"
                 />
                 <h1 className="cardtitle">Exam Simulator</h1>
@@ -34,7 +37,7 @@ function CloudPractitioner() {
               <Link to="/exam" className="links">
                 <img
                   className="roundimage"
-                  src="../../public/BCPR_exams.webp"
+                  src={exams}
                   alt="BCPR exam"
                 />
                 <h1 className="cardtitle">Practice tests</h1>
@@ -50,7 +53,7 @@ function CloudPractitioner() {
               <Link to="/examerrors" className="links">
                 <img
                   className="roundimage"
-                  src="../../public/BCPR_errors.webp"
+                  src={errors}
                   alt="BCPR errors"
                 />
                 <h1 className="cardtitle">Errors test</h1>
