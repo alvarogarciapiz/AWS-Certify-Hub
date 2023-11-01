@@ -22,12 +22,16 @@
 .home__title {
     font-size: 120px; /* Increase font size */
     line-height: 1.2;
-    text-align: right; /* Align text to the right */
+    text-align: right;
+    font-family: Ember;
+    font-weight: bold;
   }
 
 .home__text {
     font-size: 20px;
     margin-bottom: 20px;
+    font-family: Ember;
+    font-weight: normal;
 }
 
 .home__button {
@@ -37,6 +41,8 @@
     padding: 10px 20px;
     border: none;
     cursor: pointer;
+    font-family: Ember;
+    font-weight: bold;
 }
 
 .orange {
@@ -76,3 +82,16 @@
         align-items: center;
       }
 }
+
+@font-face {
+    font-family: 'Ember';
+    src: url('../../../public/fonts/Ember/AmazonEmberDisplay_Bd.ttf') format('truetype');
+    font-weight: bold;
+  }
+
+  @font-face {
+    font-family: 'Ember';
+    src: url('../../../public/fonts/Ember/AmazonEmberDisplay_Md.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
