@@ -6,6 +6,12 @@ import "../assets/styles/CloudPractitioner.css";
 function CloudPractitioner() {
   return (
     <>
+      <div className="titles">
+        <Grid item xs={12}>
+          <h1 className="examTitle">AWS Cloud Practitioner Certificate</h1>
+          <h2 className="examSubtitle">Train, test yourself and progress</h2>
+        </Grid>
+      </div>
       <div className="container-fluid">
         <Grid container spacing={5}>
           <Grid item xs={12} sm={6} md={4}>

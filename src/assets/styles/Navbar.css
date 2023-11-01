@@ -6,7 +6,8 @@ nav {
   z-index: 100;
   position: fixed;
   width: 100%;
-  background: black;
+  background: rgb(0, 0, 0);
+  box-shadow: 0px 5px 30px rgb(25, 25, 25);
 }
 .link {
   text-decoration: none;

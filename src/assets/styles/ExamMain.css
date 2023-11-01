@@ -2,8 +2,8 @@
     --background-color: #ffffff;
     --text-color: #000000;
     --primary-color: #22c4ff2c;
-    --secondary-color: #4caf50;
-    --tertiary-color: #ff5722;
+    --secondary-color: #4caf4fa2;
+    --tertiary-color: #f947479e;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -12,7 +12,7 @@
         --text-color: #ffffff;
         --primary-color: #646cff;
         --secondary-color: #4caf50;
-        --tertiary-color: #ff0000;
+        --tertiary-color: #f947474e;
     }
 }
 
@@ -26,15 +26,6 @@
     color: #888;
 }
 
-.correct {
-    background-color: var(--secondary-color);
-    color: var(--text-color);
-}
-
-.incorrect {
-    background-color: var(--tertiary-color);
-    color: var(--text-color);
-}
 
 .azul {
     color: #1c9bc9;
@@ -109,15 +100,13 @@ ul.opcionesList {
 }
 
 .correct {
-    background-color: #4caf4f7b;
-    color: #000;
-    font-weight: bold;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
 }
 
 .incorrect {
-    background-color: #ff00004e;
-    color: #000;
-    font-weight: bold;
+    background-color: var(--tertiary-color);
+    color: var(--text-color);
 }
 
 button {
