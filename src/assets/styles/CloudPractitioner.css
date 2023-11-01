@@ -53,18 +53,16 @@
 .cardsubtitle {
     padding-left: 8%;
     margin-top: 1vh;
-    text-transform: uppercase;
-    color: #060606;
-    font-size: 21px;
+    color: #FF9900;
+    font-size: 18px;
     letter-spacing: 1px;
     text-decoration: none;
 }
 .cardsubsubtitle {
     padding-left: 8%;
     margin-top: 1vh;
-    text-transform: uppercase;
-    color: #6C7A89;
-    font-size: 14px;
+    color: #556270;
+    font-size: 16px;
     text-decoration: none;
 }
 .starwarstop {

@@ -13,11 +13,11 @@ function CloudPractitioner() {
               <Link to="/examsimulator" className="links">
                 <img
                   className="roundimage"
-                  src="https://miro.medium.com/v2/resize:fit:1400/1*ieZpfpwDamHjdyhvaB_eMA.gif"
-                  alt="Darth Vader"
+                  src="../../public/BCPR_simulator.webp"
+                  alt="BCPR simulator"
                 />
                 <h1 className="cardtitle">Exam Simulator</h1>
-                <h2 className="cardsubtitle">FREE</h2>
+                <h2 className="cardsubtitle">Cloud Practitioner</h2>
                 <h3 className="cardsubsubtitle">Real exam simulation.</h3>
               </Link>
             </div>
@@ -28,11 +28,11 @@ function CloudPractitioner() {
               <Link to="/exam" className="links">
                 <img
                   className="roundimage"
-                  src="https://miro.medium.com/v2/resize:fit:1400/1*ieZpfpwDamHjdyhvaB_eMA.gif"
-                  alt="C3-P0"
+                  src="../../public/BCPR_exams.webp"
+                  alt="BCPR exam"
                 />
-                <h1 className="cardtitle">Exam Practice</h1>
-                <h2 className="cardsubtitle">FREE</h2>
+                <h1 className="cardtitle">Practice tests</h1>
+                <h2 className="cardsubtitle">Cloud Practitioner</h2>
                 <h3 className="cardsubsubtitle">
                   Random questions to test your level.
                 </h3>
@@ -44,13 +44,13 @@ function CloudPractitioner() {
               <Link to="/examerrors" className="links">
                 <img
                   className="roundimage"
-                  src="https://miro.medium.com/v2/resize:fit:1400/1*ieZpfpwDamHjdyhvaB_eMA.gif"
-                  alt="R2-D2"
+                  src="../../public/BCPR_errors.webp"
+                  alt="BCPR errors"
                 />
-                <h1 className="cardtitle">Errors Exam</h1>
-                <h2 className="cardsubtitle">FREE</h2>
+                <h1 className="cardtitle">Errors test</h1>
+                <h2 className="cardsubtitle">Cloud Practitioner</h2>
                 <h3 className="cardsubsubtitle">
-                  A test with questions you've failed previously.
+                  Questions you've failed previously.
                 </h3>
               </Link>
             </div>
