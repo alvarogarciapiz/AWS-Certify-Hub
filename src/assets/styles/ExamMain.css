@@ -44,32 +44,33 @@
 }
 
 .solucion {
-        margin-top: 20px;
-        background-color: #4caf4f2c;
-        padding: 5px;
-        max-width: 300px;
-        border-radius: 10px;
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
-    }
-    
-    @media (max-width: 768px) {
-        .pregunta {
-            margin-bottom: 30px;
-        }
+    margin-top: 20px;
+    background-color: #4caf4f2c;
+    padding: 5px;
+    max-width: 300px;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
 
-        .container {
-            margin-left: 8vw;
-            margin-right: 8vw;
-        }
-    
-        .solucion {
-            margin-top: 20px;
-            max-width: 300px;
-        }
-        
+@media (max-width: 768px) {
+    .pregunta {
+        margin-bottom: 30px;
     }
+
+    .container {
+        padding-top: 70px;
+        padding-bottom: 70px; /* Añade esto */
+        margin-left: 8vw;
+        margin-right: 8vw;
+    }
+
+    .solucion {
+        margin-top: 20px;
+        max-width: 300px;
+    }
+}
 
 .nextQuestion {
     margin-top: 20px;
