@@ -47,7 +47,7 @@ We welcome contributions from the community! If you'd like to contribute to AWS 
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the AGPL-3.0 license.
 
 <!-- ## Deploy to Github pages
 `npm run deploy` -->
