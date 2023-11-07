@@ -1,0 +1,86 @@
+/* HomeCards.css */
+.home-cards {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    /* Cambia esto */
+    flex-wrap: wrap;
+    background-color: black;
+    align-items: center;
+    padding-bottom: 100px;
+}
+
+.cardo {
+    background-color: rgb(26, 26, 26);
+    color: white;
+    width: 100%;
+    max-width: 1000px;
+    margin: 20px;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    max-height: 300px;
+}
+
+
+.card-image {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    margin: 30px;
+}
+
+.card-content {
+    padding: 20px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /* Cambia esto */
+  }
+
+@media (max-width: 768px) {
+    .home-cards {
+        justify-content: center;
+        flex-direction: row;
+    }
+
+    .card {
+        width: 70%;
+
+        flex-direction: column;
+        /* Añade esto */
+
+        .card-image,
+        .card-content {
+            width: 100%;
+            /* Añade esto */
+        }
+    }
+}
+
+
+    .card-title {
+        margin: 0;
+        margin-bottom: 10px;
+        font-size: 20px;
+    }
+
+    .card-description {
+        margin: 0;
+        font-size: 16px;
+    }
+
+    .card-button {
+        background-color: orange;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 10px 2px;
+        cursor: pointer;
+      }
