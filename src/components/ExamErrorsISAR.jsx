@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import data from "../assets/preguntas.json";
 import "../assets/styles/ExamMain.css";
-import { Link } from 'react-router-dom';
+import data from "../assets/ISAR.json";
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -11,92 +10,33 @@ function shuffleArray(array) {
   return array;
 }
 
-function ExamErrors() {
+function ExamMain() {
   const [verRespuestas, setIsActive] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [shuffledQuestions, setShuffledQuestions] = useState([]);
-  const [selectedOptions, setSelectedOptions] = useState({});
+  const [selectedOptionIndex, setSelectedOptionIndex] = useState(null);
   const [selectedStyles, setSelectedStyles] = useState({});
   const [estadoRespuesta, setEstadoRespuesta] = useState(false);
-  const [noQuestionsLeft, setNoQuestionsLeft] = useState(false);
-
-  const nextQuestion = () => {
-    setCurrentQuestion(currentQuestion + 1);
-    setSelectedOptions({});
-    setSelectedStyles({});
-    setEstadoRespuesta(false);
-    setIsActive(false);
-  };
-
-  const checkQuestion = (respuestaCorrecta) => {
-    const numeroALetra = {
-      0: "A",
-      1: "B",
-      2: "C",
-      3: "D",
-      4: "E",
-    };
-
-    let answersAsLeters = [respuestaCorrecta];
-    if (respuestaCorrecta.length > 2) {
-      answersAsLeters = respuestaCorrecta.split(",").map((item) => item.trim());
-    }
-
-    // Convierte las opciones seleccionadas a letras
-    const selectedAsLeters = Object.keys(selectedOptions).map(
-      (numero) => numeroALetra[numero]
-    );
-
-    // Realiza la comparación
-    const a = selectedAsLeters.slice().sort().join("");
-    const b = answersAsLeters.slice().sort().join("");
-    setEstadoRespuesta(a === b);
-
-    // Resetea answersAsLeters y establece isActive a true
-    answersAsLeters = [];
-    setIsActive(true);
-
-    // Si la respuesta es incorrecta, agrega el número de la pregunta a un array en localStorage
-    if (a !== b) {
-      const failedQuestions =
-        JSON.parse(localStorage.getItem("FailedBCPR")) || [];
-      failedQuestions.push(question.id);
-      localStorage.setItem("FailedBCPR", JSON.stringify(failedQuestions));
-    } else {
-      // If the answer is correct, remove the question id from FailedBCPR
-      const failedQuestions =
-        JSON.parse(localStorage.getItem("FailedBCPR")) || [];
-      const index = failedQuestions.indexOf(question.id);
-      if (index !== -1) {
-        failedQuestions.splice(index, 1);
-        localStorage.setItem("FailedBCPR", JSON.stringify(failedQuestions));
-      }
-    }
-    // Check if there are any questions left in FailedBCPR
-    const failedQuestions = JSON.parse(localStorage.getItem("FailedBCPR")) || [];
-    if (failedQuestions.length === 0) {
-      setNoQuestionsLeft(true);
-    }
-  };
 
   useEffect(() => {
-    const failedQuestions = JSON.parse(localStorage.getItem("FailedBCPR")) || [];
-    const filteredQuestions = data.preguntas.filter(question => 
-      failedQuestions.includes(question.id)
-    );
+    const failedISAR = JSON.parse(localStorage.getItem('FailedISAR')) || [];
+    const filteredQuestions = data.preguntas.filter(question => failedISAR.includes(question.id.toString()));
     setShuffledQuestions(shuffleArray(filteredQuestions));
-    if (filteredQuestions.length === 0) {
-      setNoQuestionsLeft(true);
-    }
   }, []);
 
+  useEffect(() => {
+    if (verRespuestas) {
+      checkQuestion();
+    }
+  }, [verRespuestas]);
+
+  const noQuestionsLeft = shuffledQuestions.length === 0;
   if (noQuestionsLeft) {
     return (
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
         <h1 className="noErrors">
-  🥳 There are no errors. Make some tests and come back later! 
-</h1>
-        
+          🥳 There are no errors. Make some tests and come back later! 
+        </h1>
       </div>
     );
   }
@@ -105,31 +45,42 @@ function ExamErrors() {
     return <div>¡Fin del juego!</div>;
   }
 
+  const nextQuestion = () => {
+    const nextQuestionIndex = currentQuestion + 1;
+    if (nextQuestionIndex < shuffledQuestions.length) {
+      setCurrentQuestion(nextQuestionIndex);
+      setSelectedOptionIndex(null);
+      setSelectedStyles({});
+      setEstadoRespuesta(false);
+      setIsActive(false);
+    } else {
+      setShuffledQuestions([]);
+    }
+  };
+
   const question = shuffledQuestions[currentQuestion];
+  const opciones = question.opciones.split("\n");
+  const respuestaCorrecta = question.respuesta;
 
-  const preguntaSinTresCaracteres = question.pregunta.substring(4);
+  const toggleOption = (index) => {
+    setSelectedOptionIndex(index);
+    setSelectedStyles({ [index]: true });
+    setIsActive(true);
+  };
 
-  const opciones = question.opciones
-    .split("\n")
-    .map((opcion) => opcion.trim().substring(0));
-
-  const respuestaCorrecta = question.respuesta.split(":")[1].trim();
-
-  const toggleOption = (opcion) => {
-    setSelectedOptions((prevSelectedOptions) => {
-      const updatedOptions = { ...prevSelectedOptions };
-      if (updatedOptions[opcion]) {
-        delete updatedOptions[opcion];
-      } else {
-        updatedOptions[opcion] = true;
+  const checkQuestion = () => {
+    const selectedOption = opciones[selectedOptionIndex];
+    const isCorrect = selectedOption === respuestaCorrecta;
+    setEstadoRespuesta(isCorrect);
+  
+    if (isCorrect) {
+      const failedISAR = JSON.parse(localStorage.getItem('FailedISAR')) || [];
+      const index = failedISAR.indexOf(question.id.toString());
+      if (index !== -1) {
+        failedISAR.splice(index, 1);
+        localStorage.setItem('FailedISAR', JSON.stringify(failedISAR));
       }
-      return updatedOptions;
-    });
-
-    setSelectedStyles((prevSelectedStyles) => ({
-      ...prevSelectedStyles,
-      [opcion]: !prevSelectedStyles[opcion],
-    }));
+    }
   };
 
   return (
@@ -137,7 +88,7 @@ function ExamErrors() {
       <div>
         <p className="pregunta">
           <a className="azul">Question {question.id}</a> ➡️{" "}
-          {preguntaSinTresCaracteres}
+          {question.pregunta}
         </p>
 
         <ul className="opcionesList">
@@ -156,13 +107,6 @@ function ExamErrors() {
         </ul>
 
         <div className="button-container">
-          <button
-            className="nextQuestion"
-            onClick={() => checkQuestion(respuestaCorrecta)}
-          >
-            Check Solution
-          </button>
-          <br />
           {verRespuestas && (
             <div
               className={`solucion ${
@@ -184,4 +128,4 @@ function ExamErrors() {
   );
 }
 
-export default ExamErrors;
+export default ExamMain;

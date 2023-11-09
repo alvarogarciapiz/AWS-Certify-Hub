@@ -156,7 +156,7 @@ button:focus-visible {
     align-items: center;
     height: 100vh;
     font-size: 2em;
-    color: #1a1a1a;
+    color: var(--text-color);
     animation: glow 2s ease-in-out infinite alternate;
     text-align: center;
 }
