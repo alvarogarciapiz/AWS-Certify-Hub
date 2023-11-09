@@ -11,12 +11,12 @@
 .cardo {
     display: flex;
     flex-direction: row;
-    background-color: #202020; /* color de fondo gris */
-    border-radius: 10px; /* bordes redondeados */
-    margin: 10px; /* margen alrededor de las tarjetas para evitar que se toquen */
+    background-color: #191919;
+    border-radius: 10px;
+    margin: 10px; 
     margin-bottom: 30px;
-    width: 80%; /* ancho fijo para todas las tarjetas */
-    max-width: 900px; /* ancho máximo para evitar que las tarjetas sean demasiado grandes */
+    width: 80%;
+    max-width: 900px;
 }
 
 .card-image {
@@ -41,10 +41,11 @@
     }
 
     .cardo {
-        width: 100%;
+        width: 95%;
         flex-direction: column;
         align-items: center;
         padding-top: 20px;
+        text-align: center;
     }
 
     .card-image {

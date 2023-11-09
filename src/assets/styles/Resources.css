@@ -6,6 +6,7 @@
   height: 100vh;
   max-width: 80%;
   margin: 0 auto;
+  overflow: auto;
 }
 
 .faq-item {
