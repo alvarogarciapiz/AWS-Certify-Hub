@@ -18,20 +18,6 @@ function CloudPractitioner() {
       </div>
       <div className="container-fluid">
         <Grid container spacing={5}>
-          <Grid item xs={12} sm={6} md={4}>
-            <div className="roundcard">
-            <a href={downloadFile} download className="links">
-                <img
-                  className="roundimage"
-                  src={simulator}
-                  alt="BCPR simulator"
-                />
-                <h1 className="cardtitle">Exam Simulator</h1>
-                <h2 className="cardsubtitle">Solutions Architect</h2>
-                <h3 className="cardsubsubtitle">Click to download the exam.</h3>
-              </a>
-            </div>
-          </Grid>
 
           <Grid item xs={12} sm={6} md={4}>
             <div className="roundcard">
@@ -49,6 +35,7 @@ function CloudPractitioner() {
               </Link>
             </div>
           </Grid>
+
           <Grid item xs={12} sm={6} md={4}>
             <div className="roundcard">
               <Link to="/examerrorsISAR" className="links">
@@ -65,6 +52,22 @@ function CloudPractitioner() {
               </Link>
             </div>
           </Grid>
+
+          <Grid item xs={12} sm={6} md={4}>
+            <div className="roundcard">
+            <a href={downloadFile} download className="links">
+                <img
+                  className="roundimage"
+                  src={simulator}
+                  alt="BCPR simulator"
+                />
+                <h1 className="cardtitle">Exam Simulator</h1>
+                <h2 className="cardsubtitle">Solutions Architect</h2>
+                <h3 className="cardsubsubtitle">Click to download the exam.</h3>
+              </a>
+            </div>
+          </Grid>
+          
         </Grid>
       </div>
       <div className="bottomroom"></div>
