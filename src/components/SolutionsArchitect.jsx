@@ -5,6 +5,7 @@ import "../assets/styles/CloudPractitioner.css";
 import simulator from '../../public/ISAR_simulator.jpg'
 import exams from '../../public/ISAR_exams.jpg'
 import errors from '../../public/ISAR_errors.jpg'
+import downloadFile from '../assets/AWS-Certified-Solutions-Architect-Associate.pdf';
 
 function CloudPractitioner() {
   return (
@@ -19,16 +20,16 @@ function CloudPractitioner() {
         <Grid container spacing={5}>
           <Grid item xs={12} sm={6} md={4}>
             <div className="roundcard">
-              <Link to="/examsimulator" className="links">
+            <a href={downloadFile} download className="links">
                 <img
                   className="roundimage"
                   src={simulator}
-                  alt="ISAR simulator"
+                  alt="BCPR simulator"
                 />
                 <h1 className="cardtitle">Exam Simulator</h1>
                 <h2 className="cardsubtitle">Solutions Architect</h2>
-                <h3 className="cardsubsubtitle">Real exam simulation.</h3>
-              </Link>
+                <h3 className="cardsubsubtitle">Click to download the exam.</h3>
+              </a>
             </div>
           </Grid>
 

@@ -2,9 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Grid } from "@mui/material";
 import "../assets/styles/CloudPractitioner.css";
-import simulator from '../../public/BCPR_simulator.webp'
+import simulator from '../../public/BCPR_simulator.jpg'
 import exams from '../../public/BCPR_exams.webp'
 import errors from '../../public/BCPR_errors.webp'
+import downloadFile from '../assets/AWS-Certified-Cloud-Practitioner.pdf';
 
 function CloudPractitioner() {
   return (
@@ -19,7 +20,7 @@ function CloudPractitioner() {
         <Grid container spacing={5}>
           <Grid item xs={12} sm={6} md={4}>
             <div className="roundcard">
-              <Link to="/examsimulator" className="links">
+              <a href={downloadFile} download className="links">
                 <img
                   className="roundimage"
                   src={simulator}
@@ -27,8 +28,8 @@ function CloudPractitioner() {
                 />
                 <h1 className="cardtitle">Exam Simulator</h1>
                 <h2 className="cardsubtitle">Cloud Practitioner</h2>
-                <h3 className="cardsubsubtitle">Real exam simulation.</h3>
-              </Link>
+                <h3 className="cardsubsubtitle">Click to download the exam.</h3>
+              </a>
             </div>
           </Grid>
 
