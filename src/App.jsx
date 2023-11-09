@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import './assets/styles/App.css';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 import Navbar from './components/navbar/Navbar';
 import Footer from './components/Footer';
 import Sidebar from './components/navbar/Sidebar'
@@ -13,6 +14,16 @@ import ExamErrors from "./components/ExamErrors"
 import ExamMain from "./components/ExamMain"
 import ExamSimulator from "./components/ExamSimulator"
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
 function App() {
   const [isopen, setisopen] = useState(false);
   const toggle = () => {
@@ -23,6 +34,7 @@ function App() {
     <>
       <Navbar toggle={toggle} />
       <Sidebar isopen={isopen} toggle={toggle} />
+      <ScrollToTop />
       <Routes>
         {/* Se deben añadir aquí para luego estar disponible en el NavBar */}
         <Route path="/" element={<Home />} />

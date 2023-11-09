@@ -33,6 +33,8 @@
 }
 
 .pregunta {
+    overflow-y: auto;
+    max-height: 100vh;
     font-weight: bold;
     background-color: #22c4ff2c;
     border-radius: 10px;
@@ -57,11 +59,12 @@
 @media (max-width: 768px) {
     .pregunta {
         margin-bottom: 30px;
+        max-height: 80vh; /* Modificado aquí */
     }
 
     .container {
-        padding-top: 70px;
-        padding-bottom: 70px; /* Añade esto */
+        padding-top: 60vh;
+        padding-bottom: 50vh; /* Añade esto */
         margin-left: 8vw;
         margin-right: 8vw;
     }
