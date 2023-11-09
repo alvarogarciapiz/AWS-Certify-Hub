@@ -11,8 +11,10 @@ import Resources from "./components/Resources";
 import CloudPractitioner from "./components/CloudPractitioner"
 import SolutionsArchitect from "./components/SolutionsArchitect"
 import ExamErrors from "./components/ExamErrors"
+import ExamErrorsISAR from "./components/ExamErrorsISAR"
 import ExamMain from "./components/ExamMain"
 import ExamSimulator from "./components/ExamSimulator"
+import ExamMainISAR from "./components/ExamMainISAR"
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -43,7 +45,9 @@ function App() {
         <Route path="/solutionsarchitect" element={<SolutionsArchitect />} />
         <Route path="/examsimulator" element={<ExamSimulator />} />
         <Route path="/exam" element={<ExamMain />} />
+        <Route path="/examISAR" element={<ExamMainISAR />} />
         <Route path="/examerrors" element={<ExamErrors />} />
+        <Route path="/examerrorsISAR" element={<ExamErrorsISAR />} />
       </Routes>
       <Footer />
     </>

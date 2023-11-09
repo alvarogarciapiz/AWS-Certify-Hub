@@ -34,7 +34,7 @@ function CloudPractitioner() {
 
           <Grid item xs={12} sm={6} md={4}>
             <div className="roundcard">
-              <Link to="/exam" className="links">
+              <Link to="/examISAR" className="links">
                 <img
                   className="roundimage"
                   src={exams}
@@ -50,7 +50,7 @@ function CloudPractitioner() {
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
             <div className="roundcard">
-              <Link to="/examerrors" className="links">
+              <Link to="/examerrorsISAR" className="links">
                 <img
                   className="roundimage"
                   src={errors}

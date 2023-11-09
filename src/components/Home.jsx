@@ -14,7 +14,7 @@ function Home() {
       <div className="home__right">
         <p className="home__text">Your all-in-one resource for AWS certification success, providing the knowledge and support you need to unlock AWS excellence and making AWS certifications accessible to all</p>
         <Link to="/cloudpractitioner">
-          <button className="home__button">Start Learning</button>
+          <button className="home__button">Start your career</button>
         </Link>
       </div>
       
