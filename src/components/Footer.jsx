@@ -22,10 +22,11 @@ const Footer = () => {
                     Contribute on GitHub
                 </a>
                 <a 
-                    href="https://github.com/alvarogarciapiz/AWS-Certify-Hub" 
-                    target="_blank" 
+                    href="https://github.com/alvarogarciapiz/AWS-Certify-Hub"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="github-star"
+                    title="Open the repo and click 'Star' at the top right"
                 >
                     <span className="star-icon">⭐</span>
                     Star the Repo
