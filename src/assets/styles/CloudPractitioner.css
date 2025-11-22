@@ -34,7 +34,7 @@
 
 .bottomroom {
     width: 100%;
-    height: 10vh;
+    height: 0;
 }
 
 .roundimage {
@@ -78,6 +78,9 @@
     padding: 2rem;
     max-width: 1400px;
     margin: 0 auto;
+    min-height: calc(100vh - 70px - 130px); /* 70px footer, 130px titles */
+    display: flex;
+    align-items: flex-start;
 }
 
 .titles {

@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Permitir OpenAI y otros bots de IA específicos
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+Sitemap: https://www.aws-p2.lvrpiz.com/sitemap.xml

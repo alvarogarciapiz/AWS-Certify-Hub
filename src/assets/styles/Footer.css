@@ -7,6 +7,19 @@
     backdrop-filter: blur(10px);
     color: #fff;
     border-top: 1px solid rgba(255, 153, 0, 0.1);
+    width: 100%;
+    min-height: 70px;
+    box-sizing: border-box;
+    position: static;
+    left: unset;
+    bottom: unset;
+    z-index: unset;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding-bottom: 0;
 }
 
 .footer-left {

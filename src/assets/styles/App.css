@@ -5,6 +5,12 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding-bottom: 70px; /* espacio para el footer fijo */
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #333;
