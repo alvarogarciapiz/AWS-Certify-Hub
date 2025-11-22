@@ -64,21 +64,26 @@ function ExamMain() {
   };
 
   useEffect(() => {
-    setShuffledQuestions(shuffleArray(data.preguntas));
+    const questionCount = parseInt(localStorage.getItem('examQuestionCount')) || 65;
+    const allQuestions = shuffleArray([...data.preguntas]);
+    setShuffledQuestions(allQuestions.slice(0, questionCount));
   }, []);
 
   if (currentQuestion >= shuffledQuestions.length) {
-    return <div>¡Fin del juego!</div>;
+    return (
+      <div className="exam-page">
+        <div className="exam-container">
+          <h1 style={{ textAlign: 'center', color: '#fff' }}>🎉 Exam Complete!</h1>
+        </div>
+      </div>
+    );
   }
 
   const question = shuffledQuestions[currentQuestion];
-
   const preguntaSinTresCaracteres = question.pregunta.substring(4);
-
   const opciones = question.opciones
     .split("\n")
     .map((opcion) => opcion.trim().substring(0));
-
   const respuestaCorrecta = question.respuesta.split(":")[1].trim();
 
   const toggleOption = (opcion) => {
@@ -99,13 +104,18 @@ function ExamMain() {
   };
 
   return (
-    <div className="container">
-      <div>
+    <div className="exam-page">
+      <div className="exam-container">
+        <div className="question-header">
+          <div className="question-number">
+            Question {question.id}
+          </div>
+          <div className="question-progress">
+            {currentQuestion + 1} / {shuffledQuestions.length}
+          </div>
+        </div>
 
-        <p className="pregunta">
-          <a className="azul">Question {question.id}</a> ➡️{" "}
-          {preguntaSinTresCaracteres}
-        </p>
+        <p className="pregunta">{preguntaSinTresCaracteres}</p>
 
         <ul className="opcionesList">
           {opciones.map((opcion, index) => (
@@ -124,26 +134,23 @@ function ExamMain() {
 
         <div className="button-container">
           <button
-            className="nextQuestion"
+            className="checkButton"
             onClick={() => checkQuestion(respuestaCorrecta)}
           >
-            Check Solution
+            Check Answer
           </button>
-          <br />
+
           {verRespuestas && (
-            <div
-              className={`solucion ${
-                estadoRespuesta ? "correct" : "incorrect"
-              }`}
-            >
-              {estadoRespuesta ? "Correct" : "Incorrect"}
+            <div className={`solucion ${estadoRespuesta ? "correct" : "incorrect"}`}>
+              {estadoRespuesta ? "✓ Correct!" : "✗ Incorrect"}
               {!estadoRespuesta && (
-                <div>Correct Answer: {respuestaCorrecta}</div>
+                <div className="correct-answer">Correct: {respuestaCorrecta}</div>
               )}
             </div>
           )}
+
           <button className="nextQuestion" onClick={nextQuestion}>
-            Next Question
+            Next Question →
           </button>
         </div>
       </div>

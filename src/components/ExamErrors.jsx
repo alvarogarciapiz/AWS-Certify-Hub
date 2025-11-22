@@ -92,11 +92,17 @@ function ExamErrors() {
 
   if (noQuestionsLeft) {
     return (
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-        <h1 className="noErrors">
-  🥳 There are no errors. Make some tests and come back later! 
-</h1>
-        
+      <div className="exam-page">
+        <div className="noErrors">
+          <div className="noErrors-icon">🥳</div>
+          <h1>No Errors Found!</h1>
+          <p className="noErrors-message">
+            Great job! You haven't made any mistakes yet. Keep practicing to maintain your streak!
+          </p>
+          <Link to="/exam">
+            <button className="nextQuestion">Start New Practice</button>
+          </Link>
+        </div>
       </div>
     );
   }
@@ -133,12 +139,18 @@ function ExamErrors() {
   };
 
   return (
-    <div className="container">
-      <div>
-        <p className="pregunta">
-          <a className="azul">Question {question.id}</a> ➡️{" "}
-          {preguntaSinTresCaracteres}
-        </p>
+    <div className="exam-page">
+      <div className="exam-container">
+        <div className="question-header">
+          <div className="question-number">
+            Question {question.id}
+          </div>
+          <div className="question-progress">
+            {currentQuestion + 1} / {shuffledQuestions.length}
+          </div>
+        </div>
+
+        <p className="pregunta">{preguntaSinTresCaracteres}</p>
 
         <ul className="opcionesList">
           {opciones.map((opcion, index) => (
@@ -157,26 +169,23 @@ function ExamErrors() {
 
         <div className="button-container">
           <button
-            className="nextQuestion"
+            className="checkButton"
             onClick={() => checkQuestion(respuestaCorrecta)}
           >
-            Check Solution
+            Check Answer
           </button>
-          <br />
+
           {verRespuestas && (
-            <div
-              className={`solucion ${
-                estadoRespuesta ? "correct" : "incorrect"
-              }`}
-            >
-              {estadoRespuesta ? "Correct" : "Incorrect"}
+            <div className={`solucion ${estadoRespuesta ? "correct" : "incorrect"}`}>
+              {estadoRespuesta ? "✓ Correct!" : "✗ Incorrect"}
               {!estadoRespuesta && (
-                <div>Correct Answer: {respuestaCorrecta}</div>
+                <div className="correct-answer">Correct: {respuestaCorrecta}</div>
               )}
             </div>
           )}
+
           <button className="nextQuestion" onClick={nextQuestion}>
-            Next Question
+            Next Question →
           </button>
         </div>
       </div>

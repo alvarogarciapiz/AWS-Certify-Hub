@@ -1,97 +1,206 @@
 .home {
     display: flex;
-    justify-content: space-between;
-    align-items: center; /* Add this line */
-    background-color: #000000fd;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #000000 0%, #0a0a0a 100%);
     color: #fff;
-    padding: 20px;
-    height: 95vh;
-  }
-
-.home__left {
-    flex: 1;
-    margin-right: 20px;
+    padding: 8rem 2rem 2rem;
+    min-height: 70vh;
+    position: relative;
 }
 
-.home__right {
-    flex: 1;
-    margin-left: 20px;
-    margin-right: 150px;
+.home__content {
+    max-width: 1200px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.home__left {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .home__title {
-    font-size: 120px; /* Increase font size */
-    line-height: 1.2;
-    text-align: right;
-    font-family: Ember;
+    font-size: 5rem;
+    line-height: 1.1;
+    font-family: Ember, sans-serif;
     font-weight: bold;
-  }
+    margin: 0;
+    letter-spacing: -2px;
+}
+
+.home__subtitle {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: Ember, sans-serif;
+    font-weight: normal;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.home__right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
 
 .home__text {
-    font-size: 20px;
-    margin-bottom: 20px;
-    font-family: Ember;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: Ember, sans-serif;
     font-weight: normal;
+    margin: 0;
+}
+
+.home__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .home__button {
     background-color: #FF9900;
     color: #000;
-    font-weight: bolder;
-    padding: 10px 20px;
+    font-weight: 600;
+    padding: 1rem 2.5rem;
     border: none;
     cursor: pointer;
-    font-family: Ember;
-    font-weight: bold;
+    font-family: Ember, sans-serif;
+    font-size: 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+}
+
+.home__button:hover {
+    background-color: #ffb84d;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(255, 153, 0, 0.3);
+}
+
+.home__button-secondary {
+    background-color: transparent;
+    color: #fff;
+    font-weight: 600;
+    padding: 1rem 2.5rem;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    font-family: Ember, sans-serif;
+    font-size: 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+}
+
+.home__button-secondary:hover {
+    border-color: #FF9900;
+    color: #FF9900;
+    transform: translateY(-2px);
 }
 
 .orange {
     color: #FF9900;
 }
 
-@media (max-width: 768px) {
-    .home {
-        flex-direction: column;
-        align-items: center;
-        height: auto;
+.home__stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat__number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #FF9900;
+    margin: 0;
+}
+
+.stat__label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0.5rem 0 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 968px) {
+    .home__content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
     }
 
     .home__title {
-        margin-top: 110px;
-        margin-bottom: 50px;
-        font-size: 90px; /* Increase font size */
-        text-align: center; /* Center the text */
-    }
-
-    .home__text {
-        font-size: 20px;
+        font-size: 4rem;
         text-align: center;
     }
 
-    .home__button {
-        margin-top: 50px;
-        margin-bottom: 100px;
+    .home__subtitle {
+        text-align: center;
     }
 
-    .home__right {
-        flex: 1;
-        margin-right: 20px;
-        margin-left: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
+    .home__text {
+        text-align: center;
+    }
+
+    .home__actions {
+        justify-content: center;
+    }
+
+    .home__stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .home {
+        padding: 6rem 1.5rem 2rem;
+    }
+
+    .home__title {
+        font-size: 3rem;
+    }
+
+    .home__subtitle {
+        font-size: 1.2rem;
+    }
+
+    .home__text {
+        font-size: 1rem;
+    }
+
+    .home__button,
+    .home__button-secondary {
+        width: 100%;
+        text-align: center;
+    }
+
+    .stat__number {
+        font-size: 2rem;
+    }
 }
 
 @font-face {
     font-family: 'Ember';
-    src: url('../../../public/fonts/Ember/AmazonEmberDisplay_Bd.ttf') format('truetype');
+    src: url('/fonts/Ember/AmazonEmberDisplay_Bd.ttf') format('truetype');
     font-weight: bold;
-  }
+}
 
-  @font-face {
+@font-face {
     font-family: 'Ember';
-    src: url('../../../public/fonts/Ember/AmazonEmberDisplay_Md.ttf') format('truetype');
+    src: url('/fonts/Ember/AmazonEmberDisplay_Md.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-  }
+}

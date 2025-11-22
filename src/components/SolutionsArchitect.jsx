@@ -2,9 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Grid } from "@mui/material";
 import "../assets/styles/CloudPractitioner.css";
-import simulator from '../../public/ISAR_simulator.jpg'
-import exams from '../../public/ISAR_exams.jpg'
-import errors from '../../public/ISAR_errors.jpg'
 import downloadFile from '../assets/AWS-Certified-Solutions-Architect-Associate.pdf';
 
 function CloudPractitioner() {
@@ -12,7 +9,7 @@ function CloudPractitioner() {
     <>
       <div className="titles">
         <Grid item xs={12}>
-          <h1 className="examTitle">AWS Solutions Architect Associate</h1>
+          <h1 className="examTitle">AWS Solutions Architect — Practice Portal</h1>
           <h2 className="examSubtitle">Train, test yourself and progress</h2>
         </Grid>
       </div>
@@ -24,7 +21,7 @@ function CloudPractitioner() {
               <Link to="/examISAR" className="links">
                 <img
                   className="roundimage"
-                  src={exams}
+                  src="/ISAR_exams.jpg"
                   alt="ISAR exam"
                 />
                 <h1 className="cardtitle">Practice tests</h1>
@@ -41,7 +38,7 @@ function CloudPractitioner() {
               <Link to="/examerrorsISAR" className="links">
                 <img
                   className="roundimage"
-                  src={errors}
+                  src="/ISAR_errors.jpg"
                   alt="ISAR errors"
                 />
                 <h1 className="cardtitle">Errors test</h1>
@@ -58,7 +55,7 @@ function CloudPractitioner() {
             <a href={downloadFile} download className="links">
                 <img
                   className="roundimage"
-                  src={simulator}
+                  src="/ISAR_simulator.jpg"
                   alt="BCPR simulator"
                 />
                 <h1 className="cardtitle">Exam Simulator</h1>
