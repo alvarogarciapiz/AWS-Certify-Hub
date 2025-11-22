@@ -32,11 +32,11 @@ function Home() {
             </div>
             <div className="home__stats">
               <div className="stat">
-                <h3 className="stat__number">500+</h3>
+                <h3 className="stat__number">1K+</h3>
                 <p className="stat__label">Questions</p>
               </div>
               <div className="stat">
-                <h3 className="stat__number">2</h3>
+                <h3 className="stat__number">3</h3>
                 <p className="stat__label">Certifications</p>
               </div>
               <div className="stat">

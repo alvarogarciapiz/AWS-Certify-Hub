@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
+import data from "../assets/PDOE.json";
 import "../assets/styles/ExamMain.css";
-import data from "../assets/ISAR.json";
 import { Link } from 'react-router-dom';
 
 function shuffleArray(array) {
@@ -11,29 +11,65 @@ function shuffleArray(array) {
   return array;
 }
 
-function ExamMain() {
+function ExamErrorsPDOE() {
   const [verRespuestas, setIsActive] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [shuffledQuestions, setShuffledQuestions] = useState([]);
-  const [selectedOptionIndex, setSelectedOptionIndex] = useState(null);
+  const [selectedOptions, setSelectedOptions] = useState({});
   const [selectedStyles, setSelectedStyles] = useState({});
   const [estadoRespuesta, setEstadoRespuesta] = useState(false);
   const [noQuestionsLeft, setNoQuestionsLeft] = useState(false);
 
+  const nextQuestion = () => {
+    setCurrentQuestion(currentQuestion + 1);
+    setSelectedOptions({});
+    setSelectedStyles({});
+    setEstadoRespuesta(false);
+    setIsActive(false);
+  };
+
+  const checkQuestion = (respuestaCorrecta) => {
+    const selectedAsArray = Object.keys(selectedOptions).map(Number);
+    
+    // Get the selected option text
+    const selectedOptionText = selectedAsArray.length === 1 ? opciones[selectedAsArray[0]] : null;
+    
+    // Compare the full text of the selected option with the correct answer
+    // Remove any leading letter/parenthesis (like "A) ", "B) ") from both for comparison
+    const cleanSelected = selectedOptionText ? selectedOptionText.replace(/^[A-Z]\)\s*/, '').trim() : '';
+    const cleanCorrect = respuestaCorrecta.replace(/^[A-Z]\)\s*/, '').trim();
+    
+    const isCorrect = cleanSelected === cleanCorrect;
+    
+    setEstadoRespuesta(isCorrect);
+    setIsActive(true);
+
+    if (isCorrect) {
+      const failedQuestions =
+        JSON.parse(localStorage.getItem("FailedPDOE")) || [];
+      const index = failedQuestions.indexOf(question.id);
+      if (index !== -1) {
+        failedQuestions.splice(index, 1);
+        localStorage.setItem("FailedPDOE", JSON.stringify(failedQuestions));
+      }
+    }
+
+    const failedQuestions = JSON.parse(localStorage.getItem("FailedPDOE")) || [];
+    if (failedQuestions.length === 0) {
+      setNoQuestionsLeft(true);
+    }
+  };
+
   useEffect(() => {
-    const failedISAR = JSON.parse(localStorage.getItem('FailedISAR')) || [];
-    const filteredQuestions = data.preguntas.filter(question => failedISAR.includes(question.id.toString()));
+    const failedQuestions = JSON.parse(localStorage.getItem("FailedPDOE")) || [];
+    const filteredQuestions = data.preguntas.filter(question => 
+      failedQuestions.includes(question.id)
+    );
     setShuffledQuestions(shuffleArray(filteredQuestions));
     if (filteredQuestions.length === 0) {
       setNoQuestionsLeft(true);
     }
   }, []);
-
-  useEffect(() => {
-    if (verRespuestas) {
-      checkQuestion();
-    }
-  }, [verRespuestas]);
 
   if (noQuestionsLeft) {
     return (
@@ -44,7 +80,7 @@ function ExamMain() {
           <p className="noErrors-message">
             Great job! You haven't made any mistakes yet. Keep practicing to maintain your streak!
           </p>
-          <Link to="/examISAR">
+          <Link to="/exampdoe">
             <button className="nextQuestion">Start New Practice</button>
           </Link>
         </div>
@@ -53,56 +89,28 @@ function ExamMain() {
   }
 
   if (currentQuestion >= shuffledQuestions.length) {
-    return (
-      <div className="exam-page">
-        <div className="exam-container">
-          <h1 style={{ textAlign: 'center', color: '#fff' }}>🎉 All Errors Reviewed!</h1>
-        </div>
-      </div>
-    );
+    return <div>¡Fin del juego!</div>;
   }
 
-  const nextQuestion = () => {
-    const nextQuestionIndex = currentQuestion + 1;
-    if (nextQuestionIndex < shuffledQuestions.length) {
-      setCurrentQuestion(nextQuestionIndex);
-      setSelectedOptionIndex(null);
-      setSelectedStyles({});
-      setEstadoRespuesta(false);
-      setIsActive(false);
-    } else {
-      setShuffledQuestions([]);
-    }
-  };
-
   const question = shuffledQuestions[currentQuestion];
-  const opciones = question.opciones.split("\n");
+  const opciones = question.opciones.split("\n").map((opcion) => opcion.trim());
   const respuestaCorrecta = question.respuesta;
 
-  const toggleOption = (index) => {
-    setSelectedOptionIndex(index);
-    setSelectedStyles({ [index]: true });
-  };
-
-  const checkQuestion = () => {
-    const selectedOption = opciones[selectedOptionIndex];
-    const isCorrect = selectedOption === respuestaCorrecta;
-    setEstadoRespuesta(isCorrect);
-    setIsActive(true);
-  
-    if (isCorrect) {
-      const failedISAR = JSON.parse(localStorage.getItem('FailedISAR')) || [];
-      const index = failedISAR.indexOf(question.id.toString());
-      if (index !== -1) {
-        failedISAR.splice(index, 1);
-        localStorage.setItem('FailedISAR', JSON.stringify(failedISAR));
+  const toggleOption = (opcion) => {
+    setSelectedOptions((prevSelectedOptions) => {
+      const updatedOptions = { ...prevSelectedOptions };
+      if (updatedOptions[opcion]) {
+        delete updatedOptions[opcion];
+      } else {
+        updatedOptions[opcion] = true;
       }
-    }
+      return updatedOptions;
+    });
 
-    const failedQuestions = JSON.parse(localStorage.getItem("FailedISAR")) || [];
-    if (failedQuestions.length === 0) {
-      setNoQuestionsLeft(true);
-    }
+    setSelectedStyles((prevSelectedStyles) => ({
+      ...prevSelectedStyles,
+      [opcion]: !prevSelectedStyles[opcion],
+    }));
   };
 
   return (
@@ -137,7 +145,7 @@ function ExamMain() {
         <div className="button-container">
           <button
             className="checkButton"
-            onClick={checkQuestion}
+            onClick={() => checkQuestion(respuestaCorrecta)}
           >
             Check Answer
           </button>
@@ -160,4 +168,4 @@ function ExamMain() {
   );
 }
 
-export default ExamMain;
+export default ExamErrorsPDOE;

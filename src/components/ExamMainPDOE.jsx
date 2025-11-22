@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import data from "../assets/preguntas.json";
+import data from "../assets/PDOE.json";
 import "../assets/styles/ExamMain.css";
 
 function shuffleArray(array) {
@@ -10,7 +10,7 @@ function shuffleArray(array) {
   return array;
 }
 
-function ExamMain() {
+function ExamMainPDOE() {
   const [verRespuestas, setIsActive] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [shuffledQuestions, setShuffledQuestions] = useState([]);
@@ -27,47 +27,34 @@ function ExamMain() {
   };
 
   const checkQuestion = (respuestaCorrecta) => {
-    const numeroALetra = {
-      0: "A",
-      1: "B",
-      2: "C",
-      3: "D",
-      4: "E",
-    };
-
-    let answersAsLeters = [respuestaCorrecta];
-    if (respuestaCorrecta.length > 2) {
-      answersAsLeters = respuestaCorrecta.split(",").map((item) => item.trim());
-    }
-
-    // Convierte las opciones seleccionadas a letras
-    const selectedAsLeters = Object.keys(selectedOptions).map(
-      (numero) => numeroALetra[numero]
-    );
-
-    // Realiza la comparación
-    const a = selectedAsLeters.slice().sort().join("");
-    const b = answersAsLeters.slice().sort().join("");
-    setEstadoRespuesta(a === b);
-
-    // Resetea answersAsLeters y establece isActive a true
-    answersAsLeters = [];
+    const selectedAsArray = Object.keys(selectedOptions).map(Number);
+    
+    // Get the selected option text
+    const selectedOptionText = selectedAsArray.length === 1 ? opciones[selectedAsArray[0]] : null;
+    
+    // Compare the full text of the selected option with the correct answer
+    // Remove any leading letter/parenthesis (like "A) ", "B) ") from both for comparison
+    const cleanSelected = selectedOptionText ? selectedOptionText.replace(/^[A-Z]\)\s*/, '').trim() : '';
+    const cleanCorrect = respuestaCorrecta.replace(/^[A-Z]\)\s*/, '').trim();
+    
+    const isCorrect = cleanSelected === cleanCorrect;
+    
+    setEstadoRespuesta(isCorrect);
     setIsActive(true);
 
-    // Si la respuesta es incorrecta, agrega el número de la pregunta a un array en localStorage
-    if (a !== b) {
+    if (!isCorrect) {
       const failedQuestions =
-        JSON.parse(localStorage.getItem("FailedBCPR")) || [];
+        JSON.parse(localStorage.getItem("FailedPDOE")) || [];
       failedQuestions.push(question.id);
-      localStorage.setItem("FailedBCPR", JSON.stringify(failedQuestions));
+      localStorage.setItem("FailedPDOE", JSON.stringify(failedQuestions));
     }
   };
 
   useEffect(() => {
-    const questionCountFromStorage = localStorage.getItem('examQuestionCount');
+    const questionCountFromStorage = localStorage.getItem('examQuestionCountPDOE');
     const questionCount = questionCountFromStorage === 'All' 
       ? data.preguntas.length 
-      : parseInt(questionCountFromStorage) || 65;
+      : parseInt(questionCountFromStorage) || 50;
     const allQuestions = shuffleArray([...data.preguntas]);
     setShuffledQuestions(allQuestions.slice(0, questionCount));
   }, []);
@@ -83,11 +70,8 @@ function ExamMain() {
   }
 
   const question = shuffledQuestions[currentQuestion];
-  const preguntaSinTresCaracteres = question.pregunta.substring(4);
-  const opciones = question.opciones
-    .split("\n")
-    .map((opcion) => opcion.trim().substring(0));
-  const respuestaCorrecta = question.respuesta.split(":")[1].trim();
+  const opciones = question.opciones.split("\n").map((opcion) => opcion.trim());
+  const respuestaCorrecta = question.respuesta;
 
   const toggleOption = (opcion) => {
     setSelectedOptions((prevSelectedOptions) => {
@@ -118,7 +102,7 @@ function ExamMain() {
           </div>
         </div>
 
-        <p className="pregunta">{preguntaSinTresCaracteres}</p>
+        <p className="pregunta">{question.pregunta}</p>
 
         <ul className="opcionesList">
           {opciones.map((opcion, index) => (
@@ -161,4 +145,4 @@ function ExamMain() {
   );
 }
 
-export default ExamMain;
+export default ExamMainPDOE;

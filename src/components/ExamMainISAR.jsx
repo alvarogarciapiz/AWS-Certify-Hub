@@ -19,7 +19,11 @@ function ExamMain() {
   const [estadoRespuesta, setEstadoRespuesta] = useState(false);
 
   useEffect(() => {
-    setShuffledQuestions(shuffleArray(data.preguntas));
+    const questionCountFromStorage = localStorage.getItem('examQuestionCountISAR');
+    const questionCount = questionCountFromStorage === 'All' 
+      ? data.preguntas.length 
+      : parseInt(questionCountFromStorage) || 50;
+    setShuffledQuestions(shuffleArray([...data.preguntas]).slice(0, questionCount));
   }, []);
 
   useEffect(() => {
@@ -29,7 +33,13 @@ function ExamMain() {
   }, [verRespuestas]);
 
   if (currentQuestion >= shuffledQuestions.length) {
-    return <div>¡Fin del juego!</div>;
+    return (
+      <div className="exam-page">
+        <div className="exam-container">
+          <h1 style={{ textAlign: 'center', color: '#fff' }}>🎉 Exam Complete!</h1>
+        </div>
+      </div>
+    );
   }
 
   const nextQuestion = () => {
@@ -47,13 +57,13 @@ function ExamMain() {
   const toggleOption = (index) => {
     setSelectedOptionIndex(index);
     setSelectedStyles({ [index]: true });
-    setIsActive(true);
   };
 
   const checkQuestion = () => {
     const selectedOption = opciones[selectedOptionIndex];
     const isCorrect = selectedOption === respuestaCorrecta;
     setEstadoRespuesta(isCorrect);
+    setIsActive(true);
   
     if (!isCorrect) {
       const failedISAR = JSON.parse(localStorage.getItem('FailedISAR')) || [];
@@ -63,12 +73,18 @@ function ExamMain() {
   };
 
   return (
-    <div className="container">
-      <div>
-        <p className="pregunta">
-          <a className="azul">Question {question.id}</a> ➡️{" "}
-          {question.pregunta}
-        </p>
+    <div className="exam-page">
+      <div className="exam-container">
+        <div className="question-header">
+          <div className="question-number">
+            Question {question.id}
+          </div>
+          <div className="question-progress">
+            {currentQuestion + 1} / {shuffledQuestions.length}
+          </div>
+        </div>
+
+        <p className="pregunta">{question.pregunta}</p>
 
         <ul className="opcionesList">
           {opciones.map((opcion, index) => (
@@ -86,20 +102,24 @@ function ExamMain() {
         </ul>
 
         <div className="button-container">
+          <button
+            className="checkButton"
+            onClick={checkQuestion}
+          >
+            Check Answer
+          </button>
+
           {verRespuestas && (
-            <div
-              className={`solucion ${
-                estadoRespuesta ? "correct" : "incorrect"
-              }`}
-            >
-              {estadoRespuesta ? "Correct" : "Incorrect"}
+            <div className={`solucion ${estadoRespuesta ? "correct" : "incorrect"}`}>
+              {estadoRespuesta ? "✓ Correct!" : "✗ Incorrect"}
               {!estadoRespuesta && (
-                <div>Correct Answer: {respuestaCorrecta}</div>
+                <div className="correct-answer">Correct: {respuestaCorrecta}</div>
               )}
             </div>
           )}
+
           <button className="nextQuestion" onClick={nextQuestion}>
-            Next Question
+            Next Question →
           </button>
         </div>
       </div>

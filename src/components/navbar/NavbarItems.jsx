@@ -8,6 +8,10 @@ const navbarItems = [
     link: "/solutionsarchitect",
   },
   {
+    title: "DevOps Engineer",
+    link: "/devopsengineer",
+  },
+  {
     title: "Resources",
     link: "/resources",
   },
