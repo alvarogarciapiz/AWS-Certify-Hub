@@ -1,6 +1,6 @@
 # AWS P2 — AWS Practice Portal
 
-AWS P2 (AWS Practice Portal) is a free, open, and modern platform for practicing AWS certification exams. The portal offers practice tests, error tracking, resources, and exam simulators for AWS Cloud Practitioner and AWS Solutions Architect certifications.
+AWS P2 (AWS Practice Portal) is a free, open, and modern platform for practicing AWS certification exams. The portal offers practice tests, error tracking, resources, and exam simulators for AWS Cloud Practitioner, AWS Solutions Architect, and AWS DevOps Professional certifications.
 
 ## Overview
 
@@ -24,6 +24,7 @@ AWS P2 is built with React and Vite, designed to help individuals prepare for AW
 
 - **Cloud Practitioner:** Practice tests, error tests, and downloadable exam simulator.
 - **Solutions Architect:** Practice tests, error tests, and downloadable exam simulator.
+- **DevOps Professional:** Practice tests, error tests, and downloadable exam simulator.
 
 ## Quick Start
 
