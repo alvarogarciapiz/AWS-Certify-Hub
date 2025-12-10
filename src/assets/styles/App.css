@@ -9,12 +9,8 @@ body {
   min-height: 100vh;
   margin: 0;
   padding-bottom: 70px; /* espacio para el footer fijo */
+  background-color: #050505;
+  color: #fff;
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #333;
-    color: #fff;
-  }
-}
 

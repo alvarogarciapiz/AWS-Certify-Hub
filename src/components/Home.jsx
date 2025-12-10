@@ -14,13 +14,13 @@ function Home() {
               AWS <span className="orange">P2</span>
             </h1>
             <p className="home__subtitle">
-              AWS Practice Portal — Your certification success platform
+              AWS Practice Portal — Prepare for your certification
             </p>
           </div>
           
           <div className="home__right">
             <p className="home__text">
-              Master AWS certifications with our comprehensive practice portal. Get the knowledge and support you need to unlock AWS excellence and accelerate your cloud career.
+              Prepare for your AWS certifications with our practice exams. Simple, direct, and effective.
             </p>
             <div className="home__actions">
               <Link to="/cloudpractitioner">

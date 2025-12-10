@@ -22,7 +22,7 @@ function SolutionsArchitect() {
       <div className="titles">
         <Grid item xs={12}>
           <h1 className="examTitle">AWS Solutions Architect — Practice Portal</h1>
-          <h2 className="examSubtitle">Train, test yourself and progress</h2>
+          <h2 className="examSubtitle">Practice questions for the exam</h2>
         </Grid>
       </div>
       <div className="container-fluid">

@@ -13,17 +13,22 @@
     width: 100%;
     max-width: 500px;
     min-width: 300px;
-    background-color: #fff;
+    background-color: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 16px;
-    box-shadow: 0px 0px 20px #2d2d2d;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     margin-top: 3vw;
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .roundcard:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 10px 30px rgba(255, 153, 0, 0.3);
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+    background-color: rgba(30, 30, 30, 0.8);
 }
 
 @media (max-width: 600px) {
@@ -49,7 +54,7 @@
     padding-right: 8%;
     margin-top: 5vh;
     text-transform: uppercase;
-    color: #060606;
+    color: #ffffff;
     font-size: 28px;
     letter-spacing: 2px;
     text-decoration: none;
@@ -69,7 +74,7 @@
     padding-left: 8%;
     padding-right: 8%;
     margin-top: 1vh;
-    color: #556270;
+    color: rgba(255, 255, 255, 0.7);
     font-size: 16px;
     text-decoration: none;
 }
@@ -99,7 +104,7 @@
 .examTitle {
     text-align: center;
     font-size: 2.5em;
-    color: #333;
+    color: #ffffff;
     margin: 0;
 }
   
@@ -107,26 +112,11 @@
     text-align: center;
     font-size: 1.5em;
     padding-top: 10px;
-    color: #666;
+    color: #ffffff;
     margin: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-    .examTitle, .examSubtitle {
-      color: #ffffff;
-    }
-    .roundcard {
-      border: 2px solid rgba(255, 255, 255, 0.1);
-      background-color: rgba(25, 25, 25, 0.8);
-    }
-    .cardtitle {
-      color: #ffffff;
-    }
-    body {
-        background-color: #000000fd;
-        color: #fff;
-    }
-}
+
 
 .modal-overlay {
   position: fixed;
@@ -247,11 +237,20 @@
 
 @media (max-width: 600px) {
   .modal-content {
-    padding: 2rem 1.5rem;
+    padding: 1.5rem;
+    max-height: 85vh;
+    overflow-y: auto;
+    width: 95%;
   }
 
   .question-options {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+  }
+
+  .question-option {
+    padding: 0.8rem;
+    font-size: 0.95rem;
   }
 
   .modal-actions {

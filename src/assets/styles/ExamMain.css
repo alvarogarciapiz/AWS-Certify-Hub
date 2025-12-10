@@ -1,20 +1,11 @@
 :root {
-    --background-color: #ffffff;
-    --text-color: #000000;
-    --primary-color: #22c4ff2c;
-    --secondary-color: #4caf4fa2;
-    --tertiary-color: #f947479e;
+    --background-color: #000000;
+    --text-color: #ffffff;
+    --primary-color: #646cff;
+    --secondary-color: #4caf50;
+    --tertiary-color: #f947474e;
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background-color: #000000;
-        --text-color: #ffffff;
-        --primary-color: #646cff;
-        --secondary-color: #4caf50;
-        --tertiary-color: #f947474e;
-    }
-}
 
 .card {
     padding: 2em;

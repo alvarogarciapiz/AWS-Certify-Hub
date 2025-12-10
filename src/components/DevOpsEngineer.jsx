@@ -24,7 +24,7 @@ function DevOpsEngineer() {
           <h1 className="examTitle">
             AWS DevOps Engineer Professional — Practice Portal
           </h1>
-          <h2 className="examSubtitle">Master CI/CD and automation</h2>
+          <h2 className="examSubtitle">Practice questions for the exam</h2>
         </Grid>
       </div>
       <div className="container-fluid">
