@@ -43,43 +43,6 @@ AWS P2 is built with React and Vite, designed to help individuals prepare for AW
    ```
 4. Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-## Project Structure
-
-```
-public/
-  ├── AWSHub_fullorange.ico
-  ├── BCPR_exams.webp
-  ├── BCPR_errors.webp
-  ├── BCPR_simulator.jpg
-  ├── BCPR_simulator.webp
-  ├── ISAR_exams.jpg
-  ├── ISAR_errors.jpg
-  ├── ISAR_simulator.jpg
-  ├── icon192.png
-  ├── icon512.png
-  ├── og.png
-  ├── fonts/
-  ├── sitemap.xml
-  ├── llms.txt
-  ├── robots.txt
-src/
-  ├── assets/
-  │   ├── styles/
-  │   ├── images/
-  │   ├── preguntas.json
-  │   ├── ISAR.json
-  ├── components/
-  ├── App.jsx
-  ├── main.jsx
-```
-
-## SEO & Discoverability
-
-- **Meta tags** and Open Graph/Twitter Card for rich sharing.
-- **Sitemap.xml** for search engines.
-- **llms.txt** for AI assistants and LLMs ([spec](https://llmstxt.org)).
-- **robots.txt** for crawler control.
-
 ## Contributing
 
 We welcome contributions from the community! If you'd like to contribute to AWS P2, please follow these guidelines:
@@ -93,10 +56,6 @@ We welcome contributions from the community! If you'd like to contribute to AWS 
 5. Push to your fork:  
    `git push origin feature/your-feature-name`
 6. Create a pull request, explaining your changes and their benefits.
-
-## License
-
-This project is licensed under the AGPL-3.0 license.
 
 ## Author & Credits
 
