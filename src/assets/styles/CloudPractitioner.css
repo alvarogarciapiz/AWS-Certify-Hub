@@ -13,12 +13,10 @@
     width: 100%;
     max-width: 500px;
     min-width: 300px;
-    background-color: rgba(20, 20, 20, 0.6);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: #0a0a0a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
     margin-top: 3vw;
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -26,9 +24,9 @@
 
 .roundcard:hover {
     transform: translateY(-4px);
-    border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
-    background-color: rgba(30, 30, 30, 0.8);
+    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7);
+    background-color: #111;
 }
 
 @media (max-width: 600px) {
@@ -53,11 +51,11 @@
     padding-left: 8%;
     padding-right: 8%;
     margin-top: 5vh;
-    text-transform: uppercase;
     color: #ffffff;
-    font-size: 28px;
-    letter-spacing: 2px;
+    font-size: 24px;
+    letter-spacing: -0.02em;
     text-decoration: none;
+    font-weight: 600;
 }
 
 .cardsubtitle {
@@ -65,9 +63,10 @@
     padding-right: 8%;
     margin-top: 1vh;
     color: #FF9900;
-    font-size: 18px;
-    letter-spacing: 1px;
+    font-size: 16px;
+    letter-spacing: 0;
     text-decoration: none;
+    font-weight: 500;
 }
 
 .cardsubsubtitle {
@@ -106,14 +105,17 @@
     font-size: 2.5em;
     color: #ffffff;
     margin: 0;
+    font-weight: 700;
+    letter-spacing: -0.03em;
 }
   
 .examSubtitle {
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1.25em;
     padding-top: 10px;
-    color: #ffffff;
+    color: rgba(255, 255, 255, 0.6);
     margin: 0;
+    font-weight: 400;
 }
 
 

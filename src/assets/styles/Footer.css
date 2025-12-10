@@ -2,10 +2,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem 4rem;
-    background: #050505;
+    padding: 3rem 4rem;
+    background: #000000;
     color: #fff;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
     width: 100%;
     min-height: 80px;
     box-sizing: border-box;

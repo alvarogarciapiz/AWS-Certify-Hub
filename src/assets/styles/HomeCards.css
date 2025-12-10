@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 2rem 2rem 1rem;
+    padding: 0 2rem 4rem;
     gap: 2rem;
 }
 
@@ -16,7 +16,7 @@
 
 .cards-title {
     font-size: 2.5rem;
-    font-weight: 700;
+    font-weight: 600;
     margin: 0 0 1rem;
     color: #fff;
 }
@@ -38,20 +38,18 @@
 .cardo {
     display: flex;
     flex-direction: column;
-    background: rgba(20, 20, 20, 0.6);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: #0a0a0a;
     border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .cardo:hover {
     transform: translateY(-4px);
-    border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
-    background: rgba(30, 30, 30, 0.8);
+    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7);
+    background: #111;
 }
 
 .card-image {
@@ -72,7 +70,7 @@
 .card-title {
     margin: 0;
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 600;
     color: #fff;
 }
 
@@ -93,7 +91,7 @@
     text-decoration: none;
     display: inline-block;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 500;
     cursor: pointer;
     border-radius: 8px;
     transition: all 0.3s ease;
