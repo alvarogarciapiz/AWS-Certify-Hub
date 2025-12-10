@@ -2,11 +2,26 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, #000000 0%, #0a0a0a 100%);
+    background: #050505;
     color: #fff;
-    padding: 8rem 2rem 2rem;
-    min-height: 70vh;
+    padding: 10rem 2rem 4rem;
+    min-height: 80vh;
     position: relative;
+    overflow: hidden;
+}
+
+/* Background glow effect */
+.home::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1000px;
+    height: 1000px;
+    background: radial-gradient(circle, rgba(255, 153, 0, 0.08) 0%, rgba(0,0,0,0) 70%);
+    z-index: 0;
+    pointer-events: none;
 }
 
 .home__content {
@@ -14,46 +29,49 @@
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    gap: 4rem;
     align-items: center;
+    position: relative;
+    z-index: 1;
 }
 
 .home__left {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
 .home__title {
-    font-size: 5rem;
+    font-size: 4.5rem;
     line-height: 1.1;
-    font-family: Ember, sans-serif;
-    font-weight: bold;
+    font-weight: 800;
     margin: 0;
-    letter-spacing: -2px;
+    letter-spacing: -0.04em;
+    background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.7) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .home__subtitle {
     font-size: 1.5rem;
-    color: rgba(255, 255, 255, 0.7);
-    font-family: Ember, sans-serif;
-    font-weight: normal;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 400;
     margin: 0;
-    line-height: 1.6;
+    line-height: 1.5;
+    letter-spacing: -0.02em;
 }
 
 .home__right {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
 .home__text {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: rgba(255, 255, 255, 0.8);
-    font-family: Ember, sans-serif;
-    font-weight: normal;
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 400;
     margin: 0;
 }
 
@@ -64,75 +82,77 @@
 }
 
 .home__button {
-    background-color: #FF9900;
+    background-color: #fff;
     color: #000;
     font-weight: 600;
-    padding: 1rem 2.5rem;
-    border: none;
+    padding: 0.875rem 2rem;
+    border: 1px solid #fff;
     cursor: pointer;
-    font-family: Ember, sans-serif;
-    font-size: 1rem;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    letter-spacing: 0.5px;
+    font-size: 0.95rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    letter-spacing: -0.01em;
 }
 
 .home__button:hover {
-    background-color: #ffb84d;
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(255, 153, 0, 0.3);
+    background-color: rgba(255, 255, 255, 0.9);
+    transform: translateY(-1px);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
 }
 
 .home__button-secondary {
     background-color: transparent;
-    color: #fff;
-    font-weight: 600;
-    padding: 1rem 2.5rem;
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+    padding: 0.875rem 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
     cursor: pointer;
-    font-family: Ember, sans-serif;
-    font-size: 1rem;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    letter-spacing: 0.5px;
+    font-size: 0.95rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    letter-spacing: -0.01em;
 }
 
 .home__button-secondary:hover {
-    border-color: #FF9900;
-    color: #FF9900;
-    transform: translateY(-2px);
+    border-color: #fff;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .orange {
-    color: #FF9900;
+    background: linear-gradient(135deg, #FF9900 0%, #ffb84d 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .home__stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
     padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .stat {
-    text-align: center;
+    text-align: left;
 }
 
 .stat__number {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #FF9900;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
     margin: 0;
+    letter-spacing: -0.03em;
 }
 
 .stat__label {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.6);
-    margin: 0.5rem 0 0;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0.25rem 0 0;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.05em;
+    font-weight: 500;
 }
 
 @media (max-width: 968px) {
